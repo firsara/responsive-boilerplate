@@ -1,0 +1,102 @@
+@mixin clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+
+@mixin font-size($size: $font-size, $height: $line-height) {
+  font-size: $size;
+  line-height: $height;
+}
+
+
+@mixin hardware-animation {
+  @include backface-visibility(hidden);
+  @include transform(translate3d(0,0,0));
+  @include transform-style(preserve-3d);
+}
+
+@mixin no-hardware-animation {
+  @include backface-visibility(visible);
+  @include transform(none);
+  @include transform-style(flat);
+}
+
+
+
+
+@mixin retina-sprite($folder) {
+  $sprites: sprite-map("#{$folder}/*.png"); // Generates a sprite containing every icon in the supplied folder.
+  $sprites-2x: sprite-map("#{$folder}@2x/*.png"); // Generates a second sprite containing every icon @2x resolution.
+
+  background-image: sprite-url($sprites);
+  background-repeat: no-repeat;
+  @include inline-block;
+  text-indent: -9999px;
+
+  @each $sprite in sprite-names($sprites) {
+    &.#{$folder}-#{$sprite} {
+      background-position: sprite-position($sprites, $sprite);
+      height: image-height(sprite-file($sprites, $sprite));
+      width: image-width(sprite-file($sprites, $sprite));
+    }
+  }
+
+  @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (-webkit-min-device-pixel-ratio: 2) {
+    $max-width: 0;
+
+    @each $sprite in sprite-names($sprites-2x) {
+      &.#{$folder}-#{$sprite} {
+        $max-width: max($max-width, image-width(sprite-file($sprites, $sprite)));
+        background-position: nth(sprite-position($sprites-2x, $sprite), 1) nth(sprite-position($sprites-2x, $sprite), 2) / 2;
+      }
+    }
+
+    background-image: sprite-url($sprites-2x);
+    //@include background-size(100% auto);
+    @include background-size($max-width auto);
+  }
+}
+
+
+
+
+
+
+// RWD-Mixins
+@mixin respond-to($media) {
+  @if $media == tiny-mobile {
+    @media only screen and (max-width: 480px) { @content; }
+  }
+  @else if $media == mobile {
+    @media only screen and (max-width: 767px) { @content; }
+  }
+  @else if $media == mobile-landscape {
+    @media only screen and (max-width: 767px) and (orientation: landscape) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: 768px) and (max-width: 979px) { @content; }
+  }
+  @else if $media == tablet-and-mobile {
+    @media only screen and (max-width: 979px) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: 980px) { @content; }
+  }
+  @else if $media == wide {
+    @media (min-width: 1210px) { @content; }
+  }
+}

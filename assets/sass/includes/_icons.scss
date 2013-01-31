@@ -1,0 +1,15 @@
+.icon {
+  display: block;
+  display: inline-block;
+  font-size: 0;
+  line-height: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-indent: 100% !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+.icon {
+  @include retina-sprite(icon);
+}
