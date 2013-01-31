@@ -119,6 +119,10 @@ body,
   display: none !important;
   visibility: hidden; }
 
+.span0 {
+  display: none !important;
+  visibility: hidden; }
+
 /*
 @font-face {
   font-family: 'FontName';
