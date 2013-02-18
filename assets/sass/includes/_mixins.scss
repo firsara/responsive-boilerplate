@@ -38,35 +38,39 @@
   $sprites: sprite-map("#{$folder}/*.png"); // Generates a sprite containing every icon in the supplied folder.
   $sprites-2x: sprite-map("#{$folder}@2x/*.png"); // Generates a second sprite containing every icon @2x resolution.
 
-  background-image: sprite-url($sprites);
-  background-repeat: no-repeat;
-  @include inline-block;
-  text-indent: -9999px;
+  .#{$folder} {
+    background-image: sprite-url($sprites);
+    background-repeat: no-repeat;
+    @include inline-block;
+    text-indent: -9999px;
+  }
 
   @each $sprite in sprite-names($sprites) {
-    &.#{$folder}-#{$sprite} {
+    $width: image-width(sprite-file($sprites, $sprite));
+    $height: image-height(sprite-file($sprites, $sprite));
+
+    .#{$folder}-#{$sprite} {
       background-position: sprite-position($sprites, $sprite);
-      height: image-height(sprite-file($sprites, $sprite));
-      width: image-width(sprite-file($sprites, $sprite));
+      width: $width;
+      height: $height;
+
+      &.centered {
+        margin-left: 0 - $width / 2;
+        margin-top: floor(0 - $height / 2);
+      }
     }
   }
 
   @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (-webkit-min-device-pixel-ratio: 2) {
-    $max-width: 0;
-
     @each $sprite in sprite-names($sprites-2x) {
-      &.#{$folder}-#{$sprite} {
-        $max-width: max($max-width, image-width(sprite-file($sprites, $sprite)));
-        background-position: nth(sprite-position($sprites-2x, $sprite), 1) nth(sprite-position($sprites-2x, $sprite), 2) / 2;
+      .#{$folder}-#{$sprite} {
+        background-position: center center;
+        background-image: image-url("#{$folder}@2x/#{$sprite}.png");
+        @include background-size(100% auto);
       }
     }
-
-    background-image: sprite-url($sprites-2x);
-    //@include background-size(100% auto);
-    @include background-size($max-width auto);
   }
 }
-
 
 
 
@@ -94,5 +98,8 @@
   }
   @else if $media == wide {
     @media (min-width: 1210px) { @content; }
+  }
+  @else if $media == retina {
+    @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (-webkit-min-device-pixel-ratio: 2) { @content; }
   }
 }

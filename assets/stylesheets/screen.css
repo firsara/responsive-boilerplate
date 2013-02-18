@@ -45,14 +45,6 @@ a img {
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block; }
 
-.clearfix {
-  *zoom: 1; }
-  .clearfix:before, .clearfix:after {
-    content: " ";
-    display: table; }
-  .clearfix:after {
-    clear: both; }
-
 hr {
   outline: none;
   border: none;
@@ -81,7 +73,16 @@ fieldset {
   padding: 0; }
 
 img {
-  vertical-align: middle; }
+  /* Responsive images (ensure images don't scale beyond their parents) */
+  max-width: 100%;
+  /* Part 1: Set a maxium relative to the parent */
+  width: auto\9;
+  /* IE7-8 need help adjusting responsive images */
+  height: auto;
+  /* Part 2: Scale the height according to the width, otherwise you get stretching */
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic; }
 
 label {
   cursor: pointer; }
@@ -98,6 +99,14 @@ body,
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: none;
   -webkit-touch-callout: none; }
+
+.clearfix {
+  *zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    display: table; }
+  .clearfix:after {
+    clear: both; }
 
 .float-left {
   float: left; }
@@ -122,51 +131,6 @@ body,
 .span0 {
   display: none !important;
   visibility: hidden; }
-
-/*
-@font-face {
-  font-family: 'FontName';
-  src: url('../fonts/font.eot');
-  src: local('font'), 
-       local('font'), 
-       url('../fonts/font.ttf') format('truetype'),
-       url('../fonts/font.svg#font') format('svg'); 
-}
-*/
-.icon {
-  display: block;
-  display: inline-block;
-  font-size: 0;
-  line-height: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  text-indent: 100% !important;
-  white-space: nowrap !important;
-  overflow: hidden !important; }
-
-.icon {
-  background-image: url('/assets/images/icon-s89b1f1a396.png');
-  background-repeat: no-repeat;
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: middle;
-  *vertical-align: auto;
-  zoom: 1;
-  *display: inline;
-  text-indent: -9999px; }
-  .icon.icon-blank {
-    background-position: 0 0;
-    height: 1px;
-    width: 1px; }
-  @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (-webkit-min-device-pixel-ratio: 2) {
-    .icon {
-      background-image: url('/assets/images/icon@2x-s41c2141753.png');
-      -webkit-background-size: 1px auto;
-      -moz-background-size: 1px auto;
-      -o-background-size: 1px auto;
-      background-size: 1px auto; }
-      .icon.icon-blank {
-        background-position: 0 0; } }
 
 body,
 input,

@@ -2,6 +2,11 @@ app.global.resize = function(){
 };
 
 app.global.setup = function(){
+  $('[data-span-desktop]').each(function(){
+    if (! $(this).attr('data-span-wide')) {
+      $(this).attr('data-span-wide', $(this).attr('data-span-desktop'));
+    }
+  });
 };
 
 app.global.match = function(){
@@ -16,6 +21,10 @@ app.global.match = function(){
   // dynamically add classes based on data-attribute
   $('[data-classes-'+app.is+']').each(function(){
     $(this).addClass($(this).attr('data-classes-'+app.is));
+  });
+
+  $('[data-breakpoint-'+app.is+']').each(function(){
+    $(this).remove().insertAfter($($(this).attr('data-breakpoint-'+app.is)));
   });
 };
 
