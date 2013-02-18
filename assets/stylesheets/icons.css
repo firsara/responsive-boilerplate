@@ -10,7 +10,7 @@
   overflow: hidden !important; }
 
 .icon .icon {
-  background-image: url('/assets/images/icon-s89b1f1a396.png');
+  background-image: url('../images/icon-s89b1f1a396.png');
   background-repeat: no-repeat;
   display: -moz-inline-stack;
   display: inline-block;
@@ -29,7 +29,7 @@
 @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (-webkit-min-device-pixel-ratio: 2) {
   .icon .icon-blank {
     background-position: center center;
-    background-image: url('/assets/images/icon@2x/blank.png?1357905007');
+    background-image: url('../images/icon@2x/blank.png?1357905007');
     -webkit-background-size: 100% auto;
     -moz-background-size: 100% auto;
     -o-background-size: 100% auto;
