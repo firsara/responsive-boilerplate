@@ -100,6 +100,21 @@ body,
   -webkit-text-size-adjust: none;
   -webkit-touch-callout: none; }
 
+@-webkit-viewport {
+  width: device-width; }
+
+@-moz-viewport {
+  width: device-width; }
+
+@-ms-viewport {
+  width: device-width; }
+
+@-o-viewport {
+  width: device-width; }
+
+@viewport {
+  width: device-width; }
+
 .clearfix {
   *zoom: 1; }
   .clearfix:before, .clearfix:after {
