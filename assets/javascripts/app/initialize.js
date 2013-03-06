@@ -32,6 +32,10 @@ var triggerResize = function(){
 
   app.global.resize();
 
+  // fix css vw / vh value bugs
+  $('body').slideUp(0);
+  $('body').slideDown(0);
+
   if (app[app.is] && app[app.is].resize) {
     app[app.is].resize();
   }
