@@ -1,5 +1,5 @@
 if (app.route) {
-  app.route.init(basePath, ['language', 'controller', 'action', 'id'], {language: 'de'});
+  app.route.init(jQuery('base').attr('href'), ['language', 'controller', 'action', 'id'], {language: 'de'});
 }
 
 if (app.address && app.helper.supportsHistory()) {
