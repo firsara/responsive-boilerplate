@@ -8,7 +8,7 @@ app.template.parse = function(data){
   var htmlString = data;
   var html = $(htmlString);
   
-  $('body').html(html.html());
+  $('body').html(html.find('body').html());
 
   $('.dynamic-input').remove();
   app.global.setup();
