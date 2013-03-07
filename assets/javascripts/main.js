@@ -3,7 +3,7 @@ if (app.route) {
 }
 
 if (app.address && app.helper.supportsHistory()) {
-  jQuery.address.state(jQuery('base').attr('data-state')).init(app.address.init, app.template).change(app.address.change);
+  app.address.init(jQuery('base').attr('data-state'), app.template);
 }
 
 if (app.helper) {

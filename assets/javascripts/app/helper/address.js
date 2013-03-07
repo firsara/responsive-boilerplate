@@ -8,8 +8,12 @@ app.address = (function(window, document, $, self, undefined){
   self.ready = true;
   self.templateEngine = null;
 
-  self.init = function(templateEngine){
+  self.init = function(state, templateEngine){
     self.templateEngine = templateEngine;
+    $.address.state(state).init(initialize).change(app.address.change);
+  };
+
+  var initialize = function(){
     self.bind();
   };
 
@@ -60,7 +64,9 @@ app.address = (function(window, document, $, self, undefined){
 
   self.handler = function(response){
     if (typeof response !== 'object') {
-      response = $.parseJSON(response);
+      try {
+        response = $.parseJSON(response);
+      } catch(e) {}
     }
 
     request = null;
