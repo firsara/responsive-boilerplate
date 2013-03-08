@@ -80,7 +80,7 @@
 
 // RWD-Mixins
 @mixin respond-to($media) {
-  if $media == device {
+  @if $media == device {
     @media (min-device-width: 1px) { @content; }
   }
   @else if $media == tiny-mobile {
