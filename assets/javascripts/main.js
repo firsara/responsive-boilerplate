@@ -4,6 +4,7 @@ if (app.route) {
 
 if (app.address && app.helper.supportsHistory()) {
   app.address.init(jQuery('[data-state]').attr('data-state'), app.template);
+  app.template.render();
 }
 
 if (app.helper) {
