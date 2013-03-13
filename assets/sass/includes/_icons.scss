@@ -8,6 +8,23 @@
   text-indent: 100% !important;
   white-space: nowrap !important;
   overflow: hidden !important;
+  
+  &.centered {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+  }
+
+  &.aligned-right {
+    left: auto;
+    right: 0;
+  }
+
+  &.aligned-left {
+    left: 0;
+    right: auto;
+  }
 }
 
 .icon {
