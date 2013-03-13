@@ -40,12 +40,12 @@
   $sprites: sprite-map("#{$folder}/*.png"); // Generates a sprite containing every icon in the supplied folder.
   $sprites-2x: sprite-map("#{$folder}@2x/*.png"); // Generates a second sprite containing every icon @2x resolution.
 
-  .#{$folder} {
+  //.#{$folder} {
     background-image: sprite-url($sprites);
     background-repeat: no-repeat;
     @include inline-block;
     text-indent: -9999px;
-  }
+  //}
 
   @each $sprite in sprite-names($sprites) {
     $width: image-width(sprite-file($sprites, $sprite));
