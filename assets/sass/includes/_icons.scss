@@ -27,6 +27,4 @@
   }
 }
 
-.icon {
-  @include retina-sprite(icon);
-}
+@include retina-sprite(icon);

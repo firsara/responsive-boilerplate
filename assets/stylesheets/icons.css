@@ -30,18 +30,20 @@
   zoom: 1;
   *display: inline;
   text-indent: -9999px; }
-  .icon .icon-blank {
-    background-position: 0 0;
-    width: 1px;
-    height: 1px; }
-    .icon .icon-blank.centered {
-      margin-left: -0.5px;
-      margin-top: -1px; }
-  @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (-webkit-min-device-pixel-ratio: 2) {
-    .icon .icon-blank {
-      background-position: center center;
-      background-image: url('../images/icon@2x/blank.png?1357905007');
-      -webkit-background-size: 100% auto;
-      -moz-background-size: 100% auto;
-      -o-background-size: 100% auto;
-      background-size: 100% auto; } }
+
+.icon-blank {
+  background-position: 0 0;
+  width: 1px;
+  height: 1px; }
+  .icon-blank.centered {
+    margin-left: -0.5px;
+    margin-top: -1px; }
+
+@media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (-webkit-min-device-pixel-ratio: 2) {
+  .icon-blank {
+    background-position: center center;
+    background-image: url('../images/icon@2x/blank.png?1357905007');
+    -webkit-background-size: 100% auto;
+    -moz-background-size: 100% auto;
+    -o-background-size: 100% auto;
+    background-size: 100% auto; } }
