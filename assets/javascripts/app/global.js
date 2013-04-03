@@ -36,3 +36,21 @@ app.global.unmatch = function(){
     $(this).removeClass($(this).attr('data-classes-'+app.was));
   });
 };
+
+
+
+app.global.ajaxComplete = function(e, xhr, settings){
+  setTimeout(app.global.initializeNewContent, 250);
+};
+
+app.global.initializeNewContent = function(){
+  $('*').unbind().off();
+  $('.dynamic-input').remove();
+  app.global.setup();
+  app.global.match();
+  app[app.is].match();
+
+  $(window).trigger('resize');
+  app.global.resize();
+  app[app.is].resize();
+};

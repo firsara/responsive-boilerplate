@@ -18,3 +18,5 @@ if (jQuery.client) {
   jQuery('html').addClass('browser-version-'+jQuery.client.version);
   jQuery('html').addClass('os-'+jQuery.client.os.toLowerCase());
 }
+
+jQuery(document).ajaxComplete(app.global.ajaxComplete);
