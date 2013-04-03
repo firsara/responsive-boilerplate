@@ -15,5 +15,6 @@ if (app.helper) {
 
 if (jQuery.client) {
   jQuery('html').addClass('browser-'+jQuery.client.browser.toLowerCase());
+  jQuery('html').addClass('browser-version-'+jQuery.client.version);
   jQuery('html').addClass('os-'+jQuery.client.os.toLowerCase());
 }
