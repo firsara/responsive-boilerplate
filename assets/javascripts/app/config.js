@@ -5,6 +5,7 @@ app.desktop = {};
 app.tablet = {};
 app.mobile = {};
 app.global = {};
+app.base = {};
 
 app.breakpoints = ['desktop', 'wide', 'tablet', 'mobile'];
 
