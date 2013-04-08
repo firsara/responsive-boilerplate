@@ -11,6 +11,7 @@ if (app.helper) {
   jQuery('html').addClass(app.helper.isTouchDevice() ? 'touch' : 'no-touch');
   jQuery('html').addClass(app.helper.supportsHistory() ? 'history' : 'no-history');
   jQuery('html').addClass(app.helper.supportsTransitions() ? 'transitions' : 'no-transitions');
+  jQuery('html').addClass(app.helper.isRetina() ? 'retina' : 'no-retina');
 }
 
 if (jQuery.client) {

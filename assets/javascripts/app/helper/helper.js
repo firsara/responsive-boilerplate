@@ -27,6 +27,10 @@ app.helper.isTouchDevice = function(){
   return 'ontouchstart' in window || 'onmsgesturechange' in window;
 };
 
+app.helper.isRetina = function(){
+  return window.devicePixelRatio > 1;
+};
+
 app.helper.supportsHistory = function(){
   return (window.history.pushState !== undefined);
 };
