@@ -30,7 +30,7 @@ var triggerResize = function(){
 
   storeSize = app.window;
 
-  app.global.resize();
+  app.base.resize();
 
   // fix css vw / vh value bugs
   $('body').slideUp(0);
@@ -62,8 +62,8 @@ if (typeof enquire === 'undefined') {
   app.desktop.setup();
   app.desktop.match();
   
-  app.global.setup();
-  app.global.match();
+  app.base.setup();
+  app.base.match();
 
   return;
 }
@@ -82,9 +82,9 @@ for (var i = 0, length = app.breakpoints.length; i < length; i++) {
       setup: app[breakpoint].setup
     },
     {
-      match: app.global.match,
-      unmatch: app.global.unmatch,
-      setup: (i === 0 ? app.global.setup : null)
+      match: app.base.match,
+      unmatch: app.base.unmatch,
+      setup: (i === 0 ? app.base.setup : null)
     }
   ]);
 }
