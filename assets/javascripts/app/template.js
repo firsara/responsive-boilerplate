@@ -10,12 +10,5 @@ app.template.parse = function(data){
   
   $('body').html(html.find('body').html());
 
-  $('.dynamic-input').remove();
-  app.global.setup();
-  app.global.match();
-  app[app.is].match();
-
-  $(window).trigger('resize');
-  app.global.resize();
-  app[app.is].resize();
+  app.global.initializeNewContent();
 };
