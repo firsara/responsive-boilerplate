@@ -58,7 +58,17 @@ jQuery.fn.wrapInChunks = function(html, chunkSize) {
 };
 
 
-// Place any jQuery/helper plugins in here.
+jQuery.fn.padding = function(){
+
+  var self = jQuery(this);
+  var data = {};
+  data.left = parseFloat(self.css('padding-left').replace('px', ''));
+  data.top = parseFloat(self.css('padding-top').replace('px', ''));
+  data.right = parseFloat(self.css('padding-right').replace('px', ''));
+  data.bottom = parseFloat(self.css('padding-bottom').replace('px', ''));
+  
+  return data;
+};
 
 
 /*

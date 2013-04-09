@@ -9,7 +9,6 @@ textarea {
   resize: vertical;
 }
 
-
 input,
 textarea,
 select,
@@ -29,17 +28,10 @@ fieldset {
   padding: 0;
 }
 
-
 img {
-  /* Responsive images (ensure images don't scale beyond their parents) */
-  max-width: 100%;
-  /* Part 1: Set a maxium relative to the parent */
-
-  width: auto\9;
-  /* IE7-8 need help adjusting responsive images */
-
-  height: auto;
-  /* Part 2: Scale the height according to the width, otherwise you get stretching */
+  //max-width: 100%;
+  //width: auto\9;
+  //height: auto;
 
   vertical-align: middle;
   border: 0;
@@ -49,7 +41,6 @@ img {
 label {
   cursor: pointer;
 }
-
 
 *:focus {
   outline: none;
@@ -73,39 +64,3 @@ body,
 @-ms-viewport     { width: device-width }
 @-o-viewport      { width: device-width }
 @viewport         { width: device-width }
-
-.clearfix {
-  @include clearfix();
-}
-
-.float-left {
-  float: left;
-}
-
-.float-right {
-  float: right;
-}
-
-.float-clear {
-  font-size: 0;
-  line-height: 0;
-  display: block;
-  float: none;
-  clear: both;
-}
-
-
-.pointer {
-  cursor: pointer;
-}
-
-
-.hidden {
-  display: none !important;
-  visibility: hidden;
-}
-
-.span0 {
-  display: none !important;
-  visibility: hidden;
-}

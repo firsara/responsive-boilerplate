@@ -1,14 +1,18 @@
-app.template = {};
+app.template = (function(window, document, $, self, undefined){
 
-app.template.before = function(){
-  $('body').find('*').unbind().off();
-};
+  self.before = function(){
+    $('body').find('*').unbind().off();
+  };
 
-app.template.parse = function(data){
-  var htmlString = data;
-  var html = $(htmlString);
-  
-  $('body').html(html.find('body').html());
+  self.parse = function(data){
+    var htmlString = data;
+    var html = $(htmlString);
+    
+    $('body').html(html.find('body').html());
 
-  app.global.initializeNewContent();
-};
+    app.layout.initializeNewContent();
+  };
+
+  return self;
+
+})(window, window.document, jQuery, {});

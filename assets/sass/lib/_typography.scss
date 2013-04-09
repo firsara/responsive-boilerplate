@@ -1,3 +1,6 @@
+@import "typography/config";
+@import "typography/mixins";
+
 body,
 input,
 textarea,
@@ -33,17 +36,8 @@ h1 {
   font-weight: bold;
 }
 
-h2 {
-}
-
-
 p {
   line-height: $line-height;
-}
-
-
-p + p {
-  margin-top: 1em;
 }
 
 

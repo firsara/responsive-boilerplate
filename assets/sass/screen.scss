@@ -1,23 +1,13 @@
-// compass imports
 @import "compass/reset";
 @import "compass/css3";
 
-// variables & mixins
-@import "includes/variables";
-@import "includes/mixins";
+@import "lib/grid";
+@import "lib/animation";
+@import "lib/scaffolding";
+@import "lib/typography";
 
-// include global styles + helpers
-@import "includes/global";
-
-// global interface
-@import "partials/typography";
-@import "partials/interface";
-@import "partials/forms";
-@import "partials/tables";
-@import "partials/layout";
-
-// modules
-//@import "modules/module";
-
-// template specific overrides
-//@import "templates/template";
+@import "app/forms";
+@import "app/tables";
+@import "app/typography";
+@import "app/interface";
+@import "app/layout";
