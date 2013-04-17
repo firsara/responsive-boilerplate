@@ -44,6 +44,8 @@
   $(window).resize(resize);
   $(document).ready(resize);
   $(window).load(function(){
+    storeSize = {width: 0, height: 0};
+    app.layout.loaded();
     triggerResize();
   });
 

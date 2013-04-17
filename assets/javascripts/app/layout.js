@@ -6,6 +6,10 @@ app.layout = (function(window, document, $, layout, undefined){
     app.layout.global.resize();
   };
 
+  layout.loaded = function(){
+    app.layout.global.loaded();
+  };
+
   layout.setup = function(){
     $('[data-span-desktop]').each(function(){
       if (! $(this).attr('data-span-wide')) {
