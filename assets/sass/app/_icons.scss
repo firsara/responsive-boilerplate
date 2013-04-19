@@ -26,15 +26,23 @@
   }
 
   @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (-webkit-min-device-pixel-ratio: 2) {
+    $sprite-url: sprite-url($sprites-2x);
+    $sprite-path: sprite-path($sprites-2x);
+    $sprite-width: image-width($sprite-path);
+    $sprite-height: image-height($sprite-path);
+
     @each $sprite in sprite-names($sprites-2x) {
+      $position: sprite-position($sprites-2x, $sprite);
+
       .#{$folder}-#{$sprite} {
-        background-position: center center;
-        background-image: image-url("#{$folder}@2x/#{$sprite}.png");
-        @include background-size(100% auto);
+        background-position: (nth($position, 1) / 2) (nth($position, 2) / 2);
+        background-image: $sprite-url;
+        @include background-size(($sprite-width / 2) ($sprite-height / 2));
       }
     }
   }
 }
+
 
 
 .icon {

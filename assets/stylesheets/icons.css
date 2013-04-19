@@ -41,9 +41,9 @@
 
 @media (min-resolution: 2dppx), (min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2 / 1), (-webkit-min-device-pixel-ratio: 2) {
   .icon-blank {
-    background-position: center center;
-    background-image: url('../images/icon@2x/blank.png?1365494903');
-    -webkit-background-size: 100% auto;
-    -moz-background-size: 100% auto;
-    -o-background-size: 100% auto;
-    background-size: 100% auto; } }
+    background-position: 0 0;
+    background-image: url('../images/icon@2x-s61445c820a.png');
+    -webkit-background-size: 1px 1px;
+    -moz-background-size: 1px 1px;
+    -o-background-size: 1px 1px;
+    background-size: 1px 1px; } }
