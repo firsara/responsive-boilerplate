@@ -414,6 +414,7 @@ jQuery.extend( jQuery.easing,
   BrowserDetect.init();
   
   window.$.client = { os : BrowserDetect.OS, browser : BrowserDetect.browser, version: BrowserDetect.version };
+  window.BrowserDetect = BrowserDetect;
   
 })();
 
