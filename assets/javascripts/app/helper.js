@@ -11,6 +11,11 @@ app.helper = (function(window, document, $, self, undefined){
     $('html, body').animate({scrollTop: pos}, speed);
   };
 
+  self.getScrollTop = function(){
+    var scrollable = $(window)._scrollable();
+    return scrollable.scrollTop();
+  };
+
   self.resizeFor = function(timeoutTime){
     var clearResizing = function(){
       clearInterval(intervalID);
