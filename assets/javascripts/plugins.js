@@ -70,6 +70,18 @@ jQuery.fn.padding = function(){
   return data;
 };
 
+jQuery.fn.margin = function(){
+
+  var self = jQuery(this);
+  var data = {};
+  data.left = parseFloat(self.css('margin-left').replace('px', ''));
+  data.top = parseFloat(self.css('margin-top').replace('px', ''));
+  data.right = parseFloat(self.css('margin-right').replace('px', ''));
+  data.bottom = parseFloat(self.css('margin-bottom').replace('px', ''));
+  
+  return data;
+};
+
 
 /*
  * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
