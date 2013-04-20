@@ -1,5 +1,12 @@
 app.helper = (function(window, document, $, self, undefined){
 
+  self.detections = {};
+
+  (function(){
+    self.detections.isTouchDevice = ('ontouchstart' in window || 'onmsgesturechange' in window);
+    self.detections.supportsHistory = (window.history.pushState !== undefined);
+  })();
+
   self.scrollTo = function(pos, speed, holder){
     if (pos === null) return;
     if (! speed) speed = 0;
@@ -32,7 +39,7 @@ app.helper = (function(window, document, $, self, undefined){
 
 
   self.isTouchDevice = function(){
-    return 'ontouchstart' in window || 'onmsgesturechange' in window;
+    return app.helper.detections.isTouchDevice;
   };
 
   self.isRetina = function(){
@@ -40,7 +47,7 @@ app.helper = (function(window, document, $, self, undefined){
   };
 
   self.supportsHistory = function(){
-    return (window.history.pushState !== undefined);
+    return app.helper.detections.supportsHistory;
   };
 
   self.supportsTransitions = (function(){
