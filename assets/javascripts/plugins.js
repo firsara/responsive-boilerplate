@@ -301,6 +301,7 @@ jQuery.extend( jQuery.easing,
         || this.searchVersion(navigator.appVersion)
         || "an unknown version";
       this.OS = this.searchString(this.dataOS) || "an unknown OS";
+      this.webkit = navigator.userAgent ? navigator.userAgent.toString().toLowerCase().indexOf('webkit') != -1 : false;
     },
     searchString: function (data) {
       for (var i=0;i<data.length;i++) {

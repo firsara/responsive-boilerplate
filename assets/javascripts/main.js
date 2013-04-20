@@ -20,6 +20,7 @@
     $('html').addClass('browser-'+$.client.browser.toLowerCase());
     $('html').addClass('browser-version-'+$.client.version);
     $('html').addClass('os-'+$.client.os.toLowerCase());
+    if (BrowserDetect.webkit) jQuery('html').addClass('webkit');
   }
 
   $(document).ajaxComplete(app.layout.ajaxComplete);
