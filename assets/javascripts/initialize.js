@@ -4,6 +4,9 @@
   var resizeTimeout;
   var storeSize = {width: 0, height: 0};
 
+  app.window = {width: 0, height: 0};
+  app.document = {width: 0, height: 0};
+
   var resize = function(){
     if (resizeTimeout) window.clearTimeout(resizeTimeout);
     resizeTimeout = window.setTimeout(triggerResize, 250);
