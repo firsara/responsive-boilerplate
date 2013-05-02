@@ -62,10 +62,15 @@ jQuery.fn.padding = function(){
 
   var self = jQuery(this);
   var data = {};
-  data.left = parseFloat(self.css('padding-left').replace('px', ''));
-  data.top = parseFloat(self.css('padding-top').replace('px', ''));
-  data.right = parseFloat(self.css('padding-right').replace('px', ''));
-  data.bottom = parseFloat(self.css('padding-bottom').replace('px', ''));
+
+  try {
+    data.left = parseFloat(self.css('padding-left').replace('px', ''));
+    data.top = parseFloat(self.css('padding-top').replace('px', ''));
+    data.right = parseFloat(self.css('padding-right').replace('px', ''));
+    data.bottom = parseFloat(self.css('padding-bottom').replace('px', ''));
+  } catch(e) {
+    data = {left: 0, top: 0, right: 0, bottom: 0};
+  }
   
   return data;
 };
@@ -74,10 +79,15 @@ jQuery.fn.margin = function(){
 
   var self = jQuery(this);
   var data = {};
-  data.left = parseFloat(self.css('margin-left').replace('px', ''));
-  data.top = parseFloat(self.css('margin-top').replace('px', ''));
-  data.right = parseFloat(self.css('margin-right').replace('px', ''));
-  data.bottom = parseFloat(self.css('margin-bottom').replace('px', ''));
+  
+  try {
+    data.left = parseFloat(self.css('margin-left').replace('px', ''));
+    data.top = parseFloat(self.css('margin-top').replace('px', ''));
+    data.right = parseFloat(self.css('margin-right').replace('px', ''));
+    data.bottom = parseFloat(self.css('margin-bottom').replace('px', ''));
+  } catch(e) {
+    data = {left: 0, top: 0, right: 0, bottom: 0};
+  }
   
   return data;
 };
@@ -288,9 +298,6 @@ jQuery.extend( jQuery.easing,
  * OF THE POSSIBILITY OF SUCH DAMAGE. 
  *
  */
-
-
-
 
 (function() {
   
