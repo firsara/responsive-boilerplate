@@ -9,7 +9,7 @@
 
   var resize = function(){
     if (resizeTimeout) window.clearTimeout(resizeTimeout);
-    resizeTimeout = window.setTimeout(triggerResize, 250);
+    resizeTimeout = window.setTimeout(triggerResize, 25);
   };
 
   var triggerResize = function(){
@@ -63,7 +63,7 @@
 
 
   // Internet Explorer has bug in enquire
-  if (typeof enquire === 'undefined') {
+  if (typeof enquire === 'undefined' || $.client.browser == 'Explorer' && $.client.version < 9) {
     app.layout.desktop.setup();
     app.layout.desktop.match();
     
