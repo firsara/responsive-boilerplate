@@ -21,7 +21,7 @@ app.address = (function(window, document, $, self, undefined){
     $('a').each(function(){
       if ($(this).attr('data-bypass')) {
       } else {
-        if ($(this).attr('target') === '_blank' || $(this).attr('href').indexOf('mailto') > 0) {
+        if ($(this).attr('target') === '_blank' || $(this).attr('href').indexOf('mailto') >= 0) {
           // internal links
         } else {
           if (! $(this).attr('data-address-initialized')) {
