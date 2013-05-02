@@ -36,7 +36,7 @@ app.address = (function(window, document, $, module, undefined){
   };
 
   module.cache = function(){
-    $('a[address]').each(function(){
+    $('a[data-address-initialized]').each(function(){
       var page = module.correctPageUrl( $(this).attr('href') );
 
       if (! module.getCached(page)) {

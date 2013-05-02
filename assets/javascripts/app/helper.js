@@ -42,11 +42,7 @@ app.helper = (function(window, document, $, self, undefined){
       return $(holder).animate({scrollTop: pos}, 1);
     }
 
-    if (speed == 0) {
-      self.detections.scrollable.css({scrollTop: pos});
-    } else {
-      self.detections.scrollable.animate({scrollTop: pos}, speed, ease);
-    }
+    self.detections.scrollable.animate({scrollTop: pos}, speed, ease);
   };
 
   self.getScrollTop = function(){
