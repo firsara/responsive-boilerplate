@@ -1,23 +1,25 @@
-app.address = (function(window, document, $, self, undefined){
+app.address = (function(window, document, $, module, undefined){
 
   var request = null;
   var initialized = false;
+  var bust = new Date().getTime();
+  var cache = [];
 
   if (! app.helper.supportsHistory()) return;
 
-  self.ready = true;
-  self.templateEngine = null;
+  module.ready = true;
+  module.templateEngine = null;
 
-  self.init = function(state, templateEngine){
-    self.templateEngine = templateEngine;
+  module.init = function(state, templateEngine){
+    module.templateEngine = templateEngine;
     $.address.state(state).init(initialize).change(app.address.change);
   };
 
   var initialize = function(){
-    self.bind();
+    module.bind();
   };
 
-  self.bind = function(){
+  module.bind = function(){
     $('a').each(function(){
       if ($(this).attr('data-bypass')) {
       } else {
@@ -33,13 +35,53 @@ app.address = (function(window, document, $, self, undefined){
     });
   };
 
-  self.change = function(event){
+  module.cache = function(){
+    $('a[address]').each(function(){
+      var page = module.correctPageUrl( $(this).attr('href') );
+
+      if (! module.getCached(page)) {
+        module.cachePage(page);
+      }
+    });
+  };
+
+  module.cachePage = function(page){
+    $.get(page + bust, function(result){
+      cache[page] = result;
+
+      if (localStorage) {
+        localStorage.setItem(page, result);
+      }
+    });
+  };
+
+  module.getCached = function(page){
+    if (localStorage) {
+      var data = localStorage.getItem(page);
+
+      if (data) {
+        return data;
+      }
+    }
+
+    if (cache[page]) return cache[page];
+    return false;
+  };
+
+  module.correctPageUrl = function(url){
+    var page = $.address.state().replace(/^\/$/, '') + url;
+    page = page.replace(/\/\//g, '/');
+    page += (page.indexOf('?') === -1 ? '?' : '&');
+    page += 'is_ajax=true';
+    page += '&_=';
+
+    return page;
+  }
+
+  module.change = function(event){
     if (! initialized) {
       initialized = true;
       return;
-    }
-
-    if (event.path === '/') {
     }
 
     var page = $.address.state().replace(/^\/$/, '') + event.path;
@@ -51,18 +93,29 @@ app.address = (function(window, document, $, self, undefined){
     if (request) request.abort();
 
     window.setTimeout(function(){
-      self.templateEngine.before();
+      module.templateEngine.before();
+
+      var data = module.getCached(page);
+
+      if (data) {
+        module.cachePage(page);
+        return module.parse(data);
+      }
 
       request = $.ajax({
         cache: false,
         type: 'GET',
         url: page,
-        success: self.handler
+        success: module.handler
       });
     }, 10);
   };
 
-  self.handler = function(response){
+  module.handler = function(response){
+    module.parse(response);
+  };
+
+  module.parse = function(response){
     if (typeof response !== 'object') {
       try {
         response = $.parseJSON(response);
@@ -71,9 +124,9 @@ app.address = (function(window, document, $, self, undefined){
 
     request = null;
 
-    self.templateEngine.parse(response);
-  }
+    module.templateEngine.parse(response);
+  };
 
-  return self;
+  return module;
 
 })(window, window.document, jQuery, {});
