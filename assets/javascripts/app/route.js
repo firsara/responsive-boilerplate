@@ -1,23 +1,23 @@
-app.route = (function(window, document, $, self, undefined){
+app.route = (function(window, document, $, module, undefined){
 
-  self.init = function(basePath, structure, defaults){
-    self.basePath = basePath;
-    self.structure = structure;
-    self.defaults = defaults;
-    self.fetch();
+  module.init = function(basePath, structure, defaults){
+    module.basePath = basePath;
+    module.structure = structure;
+    module.defaults = defaults;
+    module.fetch();
   };
 
-  self.fetch = function(){
-    self.data = {};
+  module.fetch = function(){
+    module.data = {};
 
-    var url = window.location.href.toString().replace(self.basePath, '').replace('#/', '').replace(/\/\//gi, '/');
+    var url = window.location.href.toString().replace(module.basePath, '').replace('#/', '').replace(/\/\//gi, '/');
     url = url.split('/');
 
     var key, value, defaultValue;
 
-    for (var i = 0, len = self.structure.length; i < len; i++) {
-      key = self.structure[i];
-      defaultValue = self.defaults[key];
+    for (var i = 0, len = module.structure.length; i < len; i++) {
+      key = module.structure[i];
+      defaultValue = module.defaults[key];
       value = url[i];
 
       if (defaultValue == 'undefined' || defaultValue == null) {
@@ -29,17 +29,17 @@ app.route = (function(window, document, $, self, undefined){
       }
 
 
-      self.data[key] = value;
+      module.data[key] = value;
     }
   };
 
-  self.get = function(key) {
+  module.get = function(key) {
     if (key == null || key == '') {
       var value = '';
 
-      for (var i = 0, len = self.structure.length; i < len; i++) {
-        key = self.structure[i];
-        value = value + self.get(key) + '/';
+      for (var i = 0, len = module.structure.length; i < len; i++) {
+        key = module.structure[i];
+        value = value + module.get(key) + '/';
       }
 
       var valid = false;
@@ -59,14 +59,14 @@ app.route = (function(window, document, $, self, undefined){
       return value;
     }
 
-    return self.data[key];
+    return module.data[key];
   };
 
 
-  self.all = function(key) {
-    return self.data;
+  module.all = function(key) {
+    return module.data;
   };
 
-  return self;
+  return module;
 
 })(window, window.document, jQuery, {});
