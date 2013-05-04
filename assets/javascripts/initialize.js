@@ -56,9 +56,12 @@
 
 
   // Fix width bug on iPhone
-  $(window).bind('orientationchange', function(e) {
-    $('body').slideUp(10);
-    $('body').slideDown(10);
+  $(window).bind('orientationchange', function(e){
+    setTimeout(function(){
+      $('body').slideUp(10);
+      $('body').slideDown(10);
+      $(window).trigger('resize');
+    }, 500);
   });
 
 
