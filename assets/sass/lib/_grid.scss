@@ -31,17 +31,63 @@
 .container       { @include grid($columns, $width, $gutter, desktop); }
 .container-fluid { @include grid-fluid($columns, $width, $gutter, desktop); }
 
+.wide-only,
+.tablet-only,
+.phone-only {
+  display: none;
+}
+
+.hidden-desktop {
+  display: none;
+}
+
 @include respond-to(wide) {
   .container       { @include grid($columns, $width-wide, $gutter-wide, wide); }
-  .container-fluid { @include grid-fluid($columns, $width, $gutter, wide); }
+  .container-fluid {
+    @include grid-fluid($columns, $width, $gutter, wide);
+  }
+
+  .hidden-wide {
+    display: none;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .wide-only {
+    display: inherit;
+  }
 }
 
 @include respond-to(tablet) {
   .container       { @include grid($columns, $width-tablet, $gutter-tablet, tablet); }
-  .container-fluid { @include grid-fluid($columns, $width, $gutter, tablet); }
+  .container-fluid {
+    @include grid-fluid($columns, $width, $gutter, tablet);
+  }
+
+  .hidden-tablet {
+    display: none;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .tablet-only {
+    display: inherit;
+  }
 }
 
 @include respond-to(mobile) {
   .container,
-  .container-fluid { @include grid-fluid($columns, $width, $gutter, mobile); }
+  .container-fluid {
+    @include grid-fluid($columns, $width, $gutter, mobile);
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .mobile-only {
+    display: inherit;
+  }
 }

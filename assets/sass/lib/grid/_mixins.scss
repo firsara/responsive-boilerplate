@@ -15,7 +15,13 @@
 
 @mixin respond-to($media) {
   @if $media == device {
-    @media (min-device-width: 1px) { @content; }
+    @media only screen and (max-device-width: 1024px) { @content; }
+  }
+  @else if $media == not-device {
+    @media only screen and (min-device-width: 1024px) { @content; }
+  }
+  @else if $media == small-screen {
+    @media only screen and (max-width: 1024px) { @content; }
   }
   @else if $media == tiny-mobile {
     @media only screen and (max-width: $breakpoint-mobile / 2) { @content; }
@@ -72,20 +78,74 @@
   $layout-margin-width: $layout-width + $gutter * 2;
   $percent-margin: $gutter / $layout-margin-width;
 
-  .row {
-    width: $percent-margin * 200% + 100%;
-    margin-left: $percent-margin * -100%;
+  @if $name == desktop {
+    .row {
+      width: $percent-margin * 200% + 100%;
+      margin-left: $percent-margin * -100%;
+    }
+
+    [class*="span"] {
+      margin-left: $percent-margin * 100%;
+      margin-right: $percent-margin * 100%;
+    }
   }
 
+
   @for $i from 1 through $columns {
-    .span#{$i},
-    [data-span-#{$name}="#{$i}"],
-    [data-span-#{$name}="span#{$i}"] {
-      width: (($i / $columns) - 2 * $percent-margin) * 100%;
-      padding: 0;
-      margin: 0 $percent-margin * 100%;
-      display: block;
-      float: left;
+    @if $name == desktop {
+      .span#{$i},
+      [data-span-#{$name}="#{$i}"],
+      [data-span-#{$name}="span#{$i}"] {
+        width: (($i / $columns) - 2 * $percent-margin) * 100%;
+        padding: 0;
+        display: block;
+        float: left;
+      }
+
+      .offset#{$i},
+      [data-offset-#{$name}="#{$i}"],
+      [data-offset-#{$name}="offset#{$i}"] {
+        $m: $percent-margin * 2 + (($i / $columns) - 2 * $percent-margin + $percent-margin * 3) * 100%;
+        margin-left: $m;
+      }
     }
+    @else {
+      [data-span-#{$name}="#{$i}"],
+      [data-span-#{$name}="span#{$i}"] {
+        width: (($i / $columns) - 2 * $percent-margin) * 100%;
+        padding: 0;
+        display: block;
+        float: left;
+      }
+
+      [data-offset-#{$name}="#{$i}"],
+      [data-offset-#{$name}="offset#{$i}"] {
+        $m: $percent-margin * 2 + (($i / $columns) - 2 * $percent-margin + $percent-margin * 3) * 100%;
+        margin-left: $m;
+      }
+    }
+  }
+
+  @if $name == desktop {
+    .span0 { width: 0; }
+  }
+
+  [data-span-#{$name}="0"],
+  [data-span-#{$name}="span0"] {
+    width: 0;
+  }
+
+
+  @if $name == desktop {
+    .offset0 {
+      margin-left: $percent-margin * 100%;
+      margin-right: $percent-margin * 100%;
+    }
+  }
+
+  [data-offset-#{$name}="0"],
+  [data-offset-#{$name}="offset0"] {
+    margin-left: $percent-margin * 100%;
+    margin-right: $percent-margin * 100%;
   }
 }
