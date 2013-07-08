@@ -1,9 +1,0 @@
-{
-  "name": "jquery-address",
-  "version": "0.0.0",
-  "commit": "60007ac94b581837c09e8924dccd94b9fdad129a",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/asual/jquery-address.git"
-  }
-}
